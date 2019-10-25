@@ -1,3 +1,4 @@
+#!/bin/bash
 date=`date -d "yesterday" +%F` 
 cp /var/log/btmp /data/btmp$date   
 cat /dev/null > /var/log/btmp     ##clear file  content
