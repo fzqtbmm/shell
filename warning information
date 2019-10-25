@@ -1,0 +1,5 @@
+date=`date -d "yesterday" +%F` 
+cp /var/log/btmp /data/btmp$date   
+cat /dev/null > /var/log/btmp     ##clear file  content
+date=`date -d "-1 day" +%F`
+last -f /data/btmp$date |awk '{ip[$3]++}END{for(i in ip){if(ip[i]>=10) {system("iptables -A INPUT -s "i" -j REJECT")}}}'
